@@ -1,0 +1,25 @@
+﻿@model ExpiringBarcode.Models.ApplicationUser
+
+@Html.Partial("_ScannerPartial")
+
+<h1>
+    Authorized!
+</h1>
+<table>
+    <tr>
+        <th>
+            Membership Number
+        </th>
+        <td>
+            @Model.MembershipNumber
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Memeber ID
+        </th>
+        <td>
+            @Model.Email
+        </td>
+    </tr>
+</table>

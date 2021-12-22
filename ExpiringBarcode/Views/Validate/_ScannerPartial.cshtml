@@ -1,0 +1,5 @@
+﻿<a href="zxing://scan/?ret=@(WebUtility.UrlEncode(Url.Action("Check", "Validate", new {barcode = "12345"}, Request.Url.Scheme).Replace("12345", "{CODE}")))"
+   class="btn btn-info btn-lg"
+   style="margin: 2em 0;">
+    LAUNCH SCANNER
+</a>
