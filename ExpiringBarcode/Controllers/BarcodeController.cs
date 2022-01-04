@@ -16,7 +16,7 @@ namespace ExpiringBarcode.Controllers
     [Authorize]
     public class BarcodeController : BaseAPIController
     {
-        public BigInteger POST(requestSharedKeyBindingModel model)
+        public BigInteger POST(RequestSharedKeyBindingModel model)
         {
             DiffieHellman DH = new DiffieHellman();
             var key = DH.getFinalKey(BigInteger.Parse(model.Key));

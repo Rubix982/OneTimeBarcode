@@ -52,7 +52,7 @@ namespace ExpiringBarcodeDemo
                     Toast.MakeText(this, "Unstable server connection", ToastLength.Short).Show();
                 }
             };
-            btnRegister.Click += async (object sender, EventArgs e) =>
+            btnRegister.Click += (object sender, EventArgs e) =>
             {
                 var intent = new Intent(this, typeof(RegisterActivity));
                 StartActivity(intent);

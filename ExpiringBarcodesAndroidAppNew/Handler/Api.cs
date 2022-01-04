@@ -15,7 +15,7 @@ namespace ExpiringBarcodeDemo.Handler
     {
         private const string serverUrl = "http://expiringbarcodedemo.gear.host/";
 
-        private User user;
+        private readonly User user;
 
         public Api(User user)
         {
@@ -58,7 +58,7 @@ namespace ExpiringBarcodeDemo.Handler
             }
             catch (System.Net.WebException ex)
             {
-                handleWebException(ex);
+                HandleWebException(ex);
                 throw;
             }
         }
@@ -93,7 +93,7 @@ namespace ExpiringBarcodeDemo.Handler
             }
             catch (System.Net.WebException e)
             {
-                handleWebException(e);
+                HandleWebException(e);
             }
         }
 
@@ -107,7 +107,7 @@ namespace ExpiringBarcodeDemo.Handler
             }
             catch (System.Net.WebException e)
             {
-                handleWebException(e);
+                HandleWebException(e);
             }
         }
 
@@ -157,16 +157,14 @@ namespace ExpiringBarcodeDemo.Handler
             return JsonConvert.DeserializeObject<T>(strResponse);
         }
 
-        private void handleWebException(System.Net.WebException ex)
+        private void HandleWebException(System.Net.WebException ex)
         {
             try
             {
-                using (var stream = ex.Response.GetResponseStream())
-                using (var reader = new StreamReader(stream))
-                {
-                    var err = reader.ReadToEnd();
-                    Console.WriteLine(err);
-                }
+                using var stream = ex.Response.GetResponseStream();
+                using var reader = new StreamReader(stream);
+                var err = reader.ReadToEnd();
+                Console.WriteLine(err);
             }
             catch (Exception)
             {

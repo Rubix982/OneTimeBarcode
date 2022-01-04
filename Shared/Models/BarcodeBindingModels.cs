@@ -2,7 +2,7 @@
 
 namespace Shared.Models
 {
-    public class requestSharedKeyBindingModel
+    public class RequestSharedKeyBindingModel
     {
         [Required]
         [Display(Name = "Key")]

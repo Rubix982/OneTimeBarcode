@@ -19,9 +19,9 @@ namespace ExpiringBarcodeDemo.Handler
 {
     public class Barcode
     {
-        private User user;
-        private string memberid;
-        private TOTP totp;
+        private readonly User user;
+        private readonly string memberid;
+        private readonly TOTP totp;
         private Bitmap cacheBitmap;
         private string cacheData;
 
@@ -47,7 +47,7 @@ namespace ExpiringBarcodeDemo.Handler
             {
                 return this.cacheBitmap;
             }
-            var barcode = this.makeBarcode(data);
+            var barcode = this.MakeBarcode(data);
             this.cacheData = data;
             this.cacheBitmap = barcode;
             return barcode;
@@ -58,7 +58,7 @@ namespace ExpiringBarcodeDemo.Handler
             return this.totp.GetCode();
         }
 
-        private Bitmap makeBarcode(string data)
+        private Bitmap MakeBarcode(string data)
         {
             var writer = new ZXing.Mobile.BarcodeWriter
             {
