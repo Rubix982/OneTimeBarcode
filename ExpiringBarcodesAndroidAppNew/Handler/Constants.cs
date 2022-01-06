@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace ExpiringBarcodeDemo.Handler
+namespace ExpiringBarcodesAndroidAppNew.Handler
 {
     public static class UserConstants
     {

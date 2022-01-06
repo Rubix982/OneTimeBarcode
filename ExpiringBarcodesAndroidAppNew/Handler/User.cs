@@ -1,7 +1,7 @@
 using System.Linq;
 using Xamarin.Auth;
 
-namespace ExpiringBarcodeDemo.Handler
+namespace ExpiringBarcodesAndroidAppNew.Handler
 {
     public class User
     {

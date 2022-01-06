@@ -9,17 +9,22 @@ using Newtonsoft.Json;
 using Shared;
 using Shared.Models;
 
-namespace ExpiringBarcodeDemo.Handler
+using Android.Util;
+
+namespace ExpiringBarcodesAndroidAppNew.Handler
 {
     public class Api
     {
-        private const string serverUrl = "http://expiringbarcodedemo.gear.host/";
+        private const string serverUrl = "http://192.168.58.25/";
 
         private readonly User user;
 
         public Api(User user)
         {
             this.user = user;
+
+            Console.WriteLine("API Created");
+            Log.Info("Barcode", "API has been created");
         }
 
         private void AddAuthHeader(HttpClient client)
@@ -113,7 +118,21 @@ namespace ExpiringBarcodeDemo.Handler
 
         public async Task<RegisterResultModel> Register(string username, string password, string confirmpassword)
         {
-            return await PostApi<RegisterResultModel>("api/account/register", new { email = username, password, confirmpassword });
+            Log.Info("MK", $"Request payload: {username}");
+
+            RegisterResultModel result = null;
+            try
+            {
+                result = await PostApi<RegisterResultModel>("api/account/register", new { email = username, password, confirmpassword });
+            } catch (Exception ex)
+            {
+                Log.Error("MK", $"Error occured while registering: {ex.Message}");
+            }
+            
+            Log.Info("MK", $"Recieved response: {result}");
+
+
+            return result;
         }
 
         private async Task<T> PostApi<T>(string invoke, dynamic param, bool throwIfNotOK = false, bool authenticate = false)

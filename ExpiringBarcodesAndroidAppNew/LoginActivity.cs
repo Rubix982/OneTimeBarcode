@@ -4,10 +4,10 @@ using Android.App;
 using Android.Content;
 using Android.Widget;
 using Android.OS;
-using ExpiringBarcodeDemo.Handler;
 using ExpiringBarcodesAndroidAppNew;
+using ExpiringBarcodesAndroidAppNew.Handler;
 
-namespace ExpiringBarcodeDemo
+namespace ExpiringBarcodesAndroidAppNew
 {
     [Activity(Label = "Please Log In")]
     public class LoginActivity : Activity

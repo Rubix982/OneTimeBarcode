@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 using Android.App;
 using Android.OS;
+using Android.Util;
 using Android.Widget;
-using ExpiringBarcodeDemo.Handler;
-using ExpiringBarcodesAndroidAppNew;
+using ExpiringBarcodesAndroidAppNew.Handler;
 
-namespace ExpiringBarcodeDemo
+namespace ExpiringBarcodesAndroidAppNew
 {
     [Activity(Label = "Register")]
     public class RegisterActivity : Activity
@@ -15,6 +15,8 @@ namespace ExpiringBarcodeDemo
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            Log.Info("MK", "OnCreate: Register Activity");
 
             this.api = new Api(new User());
             // Create your application here
