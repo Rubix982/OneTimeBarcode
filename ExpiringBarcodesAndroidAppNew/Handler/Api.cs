@@ -15,7 +15,7 @@ namespace ExpiringBarcodesAndroidAppNew.Handler
 {
     public class Api
     {
-        private const string serverUrl = "http://192.168.58.25/";
+        private const string serverUrl = "http://localhost:60203/";
 
         private readonly User user;
 
@@ -49,7 +49,7 @@ namespace ExpiringBarcodesAndroidAppNew.Handler
 
                 var content = new FormUrlEncodedContent(info);
                 var client = new HttpClient();
-                var response = await client.PostAsync(serverUrl + "token", content);
+                var response = await client.PostAsync("http://localhost:60203/token", content);
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     return false;

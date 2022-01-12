@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shared
 {
@@ -30,18 +26,13 @@ namespace Shared
 
         public BigInteger GetMyPublic()
         {
-            var p = BigInteger.Parse(P);
-            var g = BigInteger.Parse(G);
-
-            return BigInteger.ModPow(g, this.myCoeff, p);
+            return BigInteger.ModPow(BigInteger.Parse(G), this.myCoeff, BigInteger.Parse(P));
         }
         
         /* calculates a DH value using hardcoded P, chosen secret m, and shared DH value: [(G^n)^m mod P] */
         public byte[] getFinalKey(BigInteger otherPublic)
         {
-            var p = BigInteger.Parse(P);
-
-            var finaldh = BigInteger.ModPow(otherPublic, myCoeff, p);
+            var finaldh = BigInteger.ModPow(otherPublic, myCoeff, BigInteger.Parse(P));
             return getHashSha256(finaldh.ToByteArray());
         }
         private BigInteger RandomKey()
@@ -56,9 +47,7 @@ namespace Shared
         // hashes shared password with SHA-256 to get Kab
         private byte[] getHashSha256(byte[] input)
         {
-            SHA256Managed hashstring = new SHA256Managed();
-            byte[] hash = hashstring.ComputeHash(input);
-            return hash;
+            return new SHA256Managed().ComputeHash(input);
         }
     }
 }

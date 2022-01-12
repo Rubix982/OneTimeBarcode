@@ -60,7 +60,7 @@ namespace ExpiringBarcodesAndroidAppNew
 
                     Initialize();
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     await LogOut();
                 }

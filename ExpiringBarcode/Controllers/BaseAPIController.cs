@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 using ExpiringBarcode.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ExpiringBarcode.Controllers
 {
     public class BaseAPIController : ApiController
     {
         protected DbContext db;
-        private UserStore<ApplicationUser> _userStore;
+        private readonly UserStore<ApplicationUser> _userStore;
         private ApplicationUserManager _userManager;
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Shared;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Shared;
 
 namespace ExpiringBarcode.Controllers
 {
@@ -26,6 +21,7 @@ namespace ExpiringBarcode.Controllers
 
             var memberId = barcode.Substring(0, 12);
             var code = barcode.Substring(12);
+
             var member = UserManager.Users.FirstOrDefault(a => a.MembershipNumber.Equals(memberId));
             if (member == null)
             {
