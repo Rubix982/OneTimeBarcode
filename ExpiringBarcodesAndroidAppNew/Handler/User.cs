@@ -37,11 +37,7 @@ namespace ExpiringBarcodesAndroidAppNew.Handler
         
         public bool IsLoggedIn
         {
-            get
-            {
-                return (this.acc != null
-                        && !string.IsNullOrEmpty(this.GetProperty(UserConstants.Token)));
-            }
+            get { return this.acc != null && !string.IsNullOrEmpty(this.GetProperty(UserConstants.Token)); }
         }
 
         public void RequestLogout()

@@ -1,9 +1,11 @@
 using System;
+using System.Net;
+using Android.OS;
 using System.Linq;
 using Android.App;
-using Android.OS;
 using Android.Util;
 using Android.Widget;
+using Android.Content;
 using ExpiringBarcodesAndroidAppNew.Handler;
 
 namespace ExpiringBarcodesAndroidAppNew
@@ -26,19 +28,32 @@ namespace ExpiringBarcodesAndroidAppNew
             EditText password = FindViewById<EditText>(Resource.Id.password);
             EditText confirmpassword = FindViewById<EditText>(Resource.Id.confirmpassword);
             Button btnRegister = FindViewById<Button>(Resource.Id.btnRegister);
+            Button btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
 
             btnRegister.Click += async (object sender, EventArgs e) =>
             {
-                var res = await api.Register(username.Text, password.Text, confirmpassword.Text);
-                if (res.Error && res.ModelState.Any())
+                try
                 {
-                    Toast.MakeText(this, res.ModelState.First().Value.First(), ToastLength.Short).Show();
+                    var res = await api.Register(username.Text, password.Text, confirmpassword.Text);
+                    if (res.Error && res.ModelState.Any())
+                    {
+                        Toast.MakeText(this, res.ModelState.First().Value.First(), ToastLength.Short).Show();
+                    }
+                    else
+                    {
+                        Toast.MakeText(this, "Registration Complete", ToastLength.Short).Show();
+                        this.Finish();
+                    }
                 }
-                else
+                catch (WebException)
                 {
-                    Toast.MakeText(this, "Registration Complete", ToastLength.Short).Show();
-                    this.Finish();
+                    Toast.MakeText(this, "Unstable server connection", ToastLength.Short).Show();
                 }
+            };
+            btnLogin.Click += async (object sender, EventArgs e) =>
+            {
+                var intent = new Intent(this, typeof(LoginActivity));
+                StartActivity(intent);
             };
         }
     }

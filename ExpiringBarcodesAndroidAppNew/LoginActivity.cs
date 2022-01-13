@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Net;
-using Android.App;
-using Android.Content;
-using Android.Widget;
 using Android.OS;
-using ExpiringBarcodesAndroidAppNew;
+using Android.App;
+using Android.Widget;
+using Android.Content;
 using ExpiringBarcodesAndroidAppNew.Handler;
 
 namespace ExpiringBarcodesAndroidAppNew

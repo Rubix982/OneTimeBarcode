@@ -1,19 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.Graphics;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Shared;
 using ZXing;
+using System;
+using Shared;
 using ZXing.Common;
+using Android.Graphics;
 
 namespace ExpiringBarcodesAndroidAppNew.Handler
 {

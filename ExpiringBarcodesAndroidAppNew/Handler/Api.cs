@@ -15,7 +15,7 @@ namespace ExpiringBarcodesAndroidAppNew.Handler
 {
     public class Api
     {
-        private const string serverUrl = "http://localhost:60203/";
+        private const string serverUrl = "http://192.168.1.5:60203/";
 
         private readonly User user;
 
@@ -49,7 +49,7 @@ namespace ExpiringBarcodesAndroidAppNew.Handler
 
                 var content = new FormUrlEncodedContent(info);
                 var client = new HttpClient();
-                var response = await client.PostAsync("http://localhost:60203/token", content);
+                var response = await client.PostAsync(serverUrl + "token", content);
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     return false;
@@ -123,7 +123,7 @@ namespace ExpiringBarcodesAndroidAppNew.Handler
             RegisterResultModel result = null;
             try
             {
-                result = await PostApi<RegisterResultModel>("api/account/register", new { email = username, password, confirmpassword });
+                result = await PostApi<RegisterResultModel>("api/Account/Register", new { email = username, password, confirmpassword });
             } catch (Exception ex)
             {
                 Log.Error("MK", $"Error occured while registering: {ex.Message}");

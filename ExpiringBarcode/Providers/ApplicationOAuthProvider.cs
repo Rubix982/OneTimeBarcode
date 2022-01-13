@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using ExpiringBarcode.Models;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
+using System.Collections.Generic;
 using Microsoft.Owin.Security.OAuth;
-using ExpiringBarcode.Models;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security.Cookies;
 
 namespace ExpiringBarcode.Providers
 {
@@ -19,12 +16,12 @@ namespace ExpiringBarcode.Providers
 
         public ApplicationOAuthProvider(string publicClientId)
         {
-            if (publicClientId == null)
+            _publicClientId = publicClientId;
+
+            if (_publicClientId == null)
             {
                 throw new ArgumentNullException("publicClientId");
             }
-
-            _publicClientId = publicClientId;
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)

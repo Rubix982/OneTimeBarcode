@@ -1,4 +1,8 @@
-﻿<a href="http://localhost/zxing/scan/?ret=@(System.Net.WebUtility.UrlEncode(Url.Action("Check", "Validate", new {barcode = "12345"}, Request.Url.Scheme).Replace("12345", "{CODE}")))"
+﻿@using ExpiringBarcodes.Models;
+@{string link = HttpUtility.UrlEncode(Url.Action("Validate", "Check", new Barcode("12345"), Request.Url.Scheme).Replace("12345", "CODE"));}
+@{string href = string.Format("http://zxing.appspot.com/scan/?ret={0}", link);}
+
+<a href=@href
    class='btn btn-info btn-lg'
    style='margin: 2em 0;'>
     LAUNCH SCANNER

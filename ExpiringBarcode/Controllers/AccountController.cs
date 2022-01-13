@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Numerics;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
 using System.Web;
-using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using ExpiringBarcode.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using ExpiringBarcode.Providers;
-using ExpiringBarcode.Results;
+using System.Linq;
 using Shared.Models;
+using System.Net.Http;
+using System.Web.Http;
+using System.Numerics;
+using ExpiringBarcode.Models;
+using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using Microsoft.Owin.Security.Cookies;
 
 namespace ExpiringBarcode.Controllers
 {
@@ -94,6 +88,8 @@ namespace ExpiringBarcode.Controllers
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
+            Console.WriteLine("Here - 1");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
