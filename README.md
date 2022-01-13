@@ -1,8 +1,10 @@
 # Expiring Barcode
 
-- DB is currently using remote... because I had trouble getting mdf on my machine. but feel free to connect to other database server
+- DB is currently using sql server with visual studio plugin
 
 ## To test android in simulator and allow it to talk to localhost:
+
+Tried these steps, connection not working.
 
 - run visual studio in admin
 
